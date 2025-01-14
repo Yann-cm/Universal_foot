@@ -1,0 +1,322 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr;
+  gap: 0px 0px;
+  height: 100%;
+  margin: 0;
+  grid-auto-flow: row;
+  justify-items: stretch;
+  grid-template-areas:
+    ". M_c"
+    "m_h classement";
+  border: 3px solid black;
+}
+
+.i1 {  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  grid-template-rows: 0.3fr 1.8fr 0.9fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Nom stade-name"
+    "logo stade"
+    "logo state";
+}
+.Nom { grid-area: Nom; }
+.state {  display: grid;
+  grid-template-columns: 1fr 0.9fr 1.1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "saison-2023-2024 domicile exterieur"
+    "win win_h win_a"
+    "lose lose_h lose_a"
+    "draw draw_h draw_a";
+  grid-area: state;
+}
+
+.lose_h { grid-area: lose_h; }
+
+.lose_a { grid-area: lose_a; }
+
+.draw_h { grid-area: draw_h; }
+
+.draw_a { grid-area: draw_a; }
+
+.win_h { grid-area: win_h; }
+
+.win_a { grid-area: win_a; }
+
+.win { grid-area: win; }
+
+.lose { grid-area: lose; }
+
+.draw { grid-area: draw; }
+
+.saison-2023-2024 { grid-area: saison-2023-2024; }
+
+.domicile { grid-area: domicile; }
+
+.exterieur { grid-area: exterieur; }
+
+.stade {  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 0.8fr;
+  grid-template-rows: 1.6fr 0.8fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "stade-photo stade-photo stade-photo"
+    "drapeau-pays ville nb_place";
+  grid-area: stade;
+}
+
+.drapeau-pays { grid-area: drapeau-pays; }
+
+.ville { grid-area: ville; }
+
+.nb_place { grid-area: nb_place; }
+
+.stade-photo { grid-area: stade-photo; }
+
+.stade-name { grid-area: stade-name; }
+
+.logo { grid-area: logo; }
+
+.M_c {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 0.2fr 1.8fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "m_info"
+    "Match_cours"; 
+  grid-area: M_c; 
+}
+.m_info { grid-area: m_info; }
+.Match_cours { grid-area: Match_cours; }
+
+.classement {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 1.9fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "info_c"
+    "c";
+  grid-area: classement;
+}
+
+.info_c { grid-area: info_c; }
+
+.c { grid-area: c; }
+
+.m_h {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 0.1fr 1.9fr; 
+  gap: 0px 0px; 
+  grid-area: m_h; 
+}
+.m_histo { grid-area: 1 / 1 / 2 / 2; }
+.h_info { grid-area: 1 / 1 / 2 / 2; }
+
+.container * {
+  border: 1px solid red;
+  position: relative;
+}
+
+.container *:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+  
+  
+  .img{
+    width: 100%;
+    height: auto;
+    display: block;
+    align-items: center;
+  }
+
+  .img_match{
+width: 60%;
+height: auto;
+display: block;
+align-items: center;
+max-height: 200px;
+  }
+
+.middle {
+  flex: 1;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.info_match,.info_match_milieu{
+  width: 100%;
+    flex-grow: 1;
+    margin: 0;
+    justify-content: center;
+    text-align: center;
+}
+
+.info_match_milieu{
+  border: 1px solid black;
+}
+
+.div_info{
+  display: flex;
+  align-items: center; /* Centrer verticalement */
+  justify-content: center; /* Centrer horizontalement */
+  width: 100%;
+  height: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Hauteur de votre grande div */
+}
+
+.item {
+  flex: 1;
+}
+
+.item1 {
+  background-color: red;
+}
+
+.item2 {
+  background-color: green;
+}
+
+.item3 {
+  background-color: blue;
+}
+.info_match {
+  display: flex; /* Utiliser flexbox */
+  width: 100%; /* Largeur totale */
+}
+
+.partie {
+  flex: 1; /* Chaque partie prendra autant d'espace que possible */
+  border: 1px solid black; /* Juste pour la démonstration, pour visualiser les parties */
+}
+
+
+.effectif {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
+
+.info_joueur {
+  width: 16%; 
+  height: 18%;
+  background-color: black;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 30px;
+}
+
+.image {
+  width: 100%;
+}
+
+.text {
+  width: 100%;
+  height: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+
+}
+
+.text p {
+  margin: 5px;
+  font-size: 16px;
+}
+
+@media (max-width: 950px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "i1"
+      "classement"
+      "m_h"
+      "M_c";
+      max-width: 100%;
+
+  }
+
+  .i1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Nom"
+      "logo"
+      "stade-name"
+      "stade"
+      "state";
+    max-width: 100%;
+    place-items: center;
+  }
+
+
+  .logo{
+    width: 60%;
+    height: auto;
+  }
+
+  .stade-photo{
+    width: 100%;
+  }
+  .c table th:nth-child(n+5),
+  .c table td:nth-child(n+5) {
+    display: none; /* Masquer les colonnes à partir de la cinquième colonne */
+  }
+
+
+  .info_joueur{
+    width: 30%; 
+    height: 8%;
+    background-color: black;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+   margin: 10px;
+  }
+
+
+
+
+}

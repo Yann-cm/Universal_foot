@@ -1,0 +1,98 @@
+.page_amis {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .partie {
+    flex: 1;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+  }
+
+
+  .profil-container {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 300px; /* Largeur du container profil */
+    margin: 10px;
+  }
+
+  .photo-profil {
+    flex: 1;
+    background-color: #f0f0f0;
+    /* Vous pouvez ajouter des styles pour la photo ici, comme la taille de l'image */
+  }
+
+  .info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .pseudo {
+    flex: 1;
+    font-weight: bold;
+  }
+
+  .clan {
+    flex: 1;
+    color: #666;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 7px;
+  }
+
+  .voir-plus {
+    flex: 1;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px;
+  }
+
+
+  .add_user{
+    background-color: rgb(14, 223, 14);
+  }
+  .refuse_user{
+    background-color: red;
+  }
+
+
+
+
+
+
+
+  @media only screen and (max-width: 950px) {
+    .page_amis {
+      flex-direction: column;
+      width: auto; /* La largeur s'ajustera automatiquement */
+    }
+  
+    .info {
+      flex: 1;
+      padding: 0;
+    }
+  
+    .photo-profil {
+      width: 100%;
+    }
+  
+    .pseudo,
+    .clan {
+      text-align: center;
+    }
+  
+    .voir-plus {
+      align-self: center;
+    }
+  }
+  

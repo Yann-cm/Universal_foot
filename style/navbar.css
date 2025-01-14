@@ -1,0 +1,237 @@
+@media only screen and (min-width: 950px) {
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      background-color: #333; /* Couleur de fond de la navbar */
+      color: #fff; /* Couleur du texte */
+      text-decoration: none;
+    }}
+
+
+
+
+    .navbar-section {
+      display: flex;
+      border: 1px solid green; 
+      text-decoration: none;
+    }
+    .navbar-section-large {
+      flex-grow: 2; 
+      text-decoration: none;
+    }
+    
+    .navbar-section a {
+      color: #fff; /* Couleur du texte des liens */
+      text-decoration: none; /* Supprimer les soulignements des liens */
+      text-decoration: none;
+    }
+    .mg-left {
+      margin-left: 10px;
+    }
+    .navbar-section a:hover {
+      text-decoration: underline; /* Souligner les liens au survol */
+      text-decoration: none;
+    }
+    .navbar_logo{
+      border: 3px solid rgb(97, 3, 97);
+      max-width: 60px;
+      height: auto;
+      display: block;
+      text-decoration: none;
+    }
+    .navbar-section {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      text-decoration: none;
+    }
+    .navbar-section a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .navbar-section a:hover {
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+    }
+    .navbar-section a.mid {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      z-index: 10;
+      padding-left: 10px;
+      margin-top: 15px;
+      max-width: 90px;
+    }
+    .dropdown-content a {
+      text-decoration: none;
+      display: block;
+      color : red;
+      background-color: black;
+      padding-left: 10px;
+      margin-top: 3px;
+      text-decoration: none;
+      align-items: center;
+      text-align: center;
+      transition: ease-in-out 0.2s;
+    }
+    .dropdown-content a:hover {
+      background-color: #ddd;
+      text-decoration: none;
+      transform: scale(1.05);
+      transition: ease-in-out 0.2s;
+    }
+  
+    
+    
+    
+    .btn-two {
+      color: #FFF;
+      transition: all 0.5s;
+      position: relative; 
+    }
+    .btn-two span {
+      z-index: 2; 
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%; 
+    }
+    .btn-two::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      transition: all 0.5s;
+      border: 1px solid rgba(255,255,255,0.2);
+      background-color: rgba(255,255,255,0.1);
+    }
+    .btn-two::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      transition: all 0.5s;
+      border: 1px solid rgba(255,255,255,0.2);
+      background-color: rgba(255,255,255,0.1);
+    }
+    .btn-two:hover::before {
+      transform: rotate(-45deg);
+      background-color: rgba(255,255,255,0);
+    }
+    .btn-two:hover::after {
+      transform: rotate(45deg);
+      background-color: rgba(255,255,255,0);
+    }
+  
+
+    .profile-container {
+      width: 10%;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      display: flex;}
+  
+
+  .username,.credit {
+    display: flex;
+    align-items: center;
+    font-size: 100%;
+    font-weight: bold;
+    flex: 0.5;
+  }
+
+  .image_profil {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+  
+  .avatar {
+    width: 50%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  #sidebar {
+    height: 60%;
+    position: absolute;
+    top: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 40px;
+    z-index: 3;
+    backdrop-filter: blur(5px);
+    background-color: pink(0, 0, 0, 0.5);
+    width: 0px;
+
+  }
+  
+  #sidebar a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+  }
+  .links{
+    display: none;
+  }
+    @media only screen and (max-width: 950px) {
+    .navbar{
+      display: none;
+    }
+
+ 
+    .side_open{
+      width: 100%;
+      z-index: 14;
+      position: relative;
+      background-color: aqua;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      margin: 3px;
+    }
+    .bouton_connexion{
+      margin: 5px;
+      color: #fff;
+      text-decoration: none;
+      padding: 3px 5px;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+
+    .bouton_connexion:hover {
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+    }
+.image_profil{
+  display: flex; /* Utiliser le modèle de boîte flexible */
+  flex-direction: row; /* Aligner les éléments horizontalement */
+  justify-content: flex-end; /* Aligner les éléments à droite */
+}
+.avatar{
+  width: 15%;
+}
+  }

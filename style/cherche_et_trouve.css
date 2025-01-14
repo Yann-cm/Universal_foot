@@ -1,0 +1,152 @@
+/* Style général du formulaire */
+#cherche_et_trouve {
+    margin: 20px auto;
+    width: 300px;
+    text-align: center;
+    display: flex; /* Définition du conteneur en flex */
+    flex-direction: column; /* Pour aligner les éléments verticalement */
+    align-items: center;
+}
+.top-div {
+    height: 15%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.middle-div {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom-div {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-div p, .top-div p{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.rater{
+    background-color: red;
+}
+
+.reussi{
+    background-color: #4CAF50;
+}
+
+.chrono-container {
+    text-align: center;
+    margin-bottom: 20px;
+    height: 25%;
+    background-color: red;
+}
+
+
+.chrono-container label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.chrono {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#joueur_info {
+    margin-bottom: 20px;
+    display: none;
+}
+
+/* Style pour le label */
+#joueur_info label {
+    font-weight: bold;
+    color: #333;
+    display: block; 
+    margin-bottom: 5px;
+}
+
+#info {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+#info p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0; 
+}
+
+
+
+
+.bouton_jeux {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+#submitButton{
+    display: none;
+}
+
+
+/* Style du bouton d'envoi */
+#submitButton {
+    background-color: #008CBA;
+}
+
+/* Style du chronomètre et de l'info */
+#chrono, #info {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+/* Style pour le label */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    
+  }
+
+#reponse_user{
+    display: none;
+}
+
+#titre_joueur{
+    display: none;
+}
+
+
+
+.a {
+    display: inline-block; /* Afficher comme un bloc */
+    background-color: #007bff; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Supprimer le soulignement du texte */
+    padding: 10px 20px; /* Espacement intérieur */
+    border-radius: 5px; /* Coins arrondis */
+    transition: background-color 0.3s ease; /* Transition fluide de la couleur de fond */
+}
+
+.a:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}

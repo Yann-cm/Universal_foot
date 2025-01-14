@@ -1,0 +1,190 @@
+.league {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centrer horizontalement les éléments */
+}
+
+
+
+.info_league{
+  width: 20%; /* Ajustez la largeur totale de chaque boîte */
+  height: 125px; /* Hauteur de votre choix */
+  margin: 50px; /* Ajouter une marge entre les boîtes */
+}
+.info_league a{
+  width: 100%; /* Ajustez la largeur totale de chaque boîte */
+  height: 100%; /* Hauteur de votre choix */
+  background-color: lightblue; /* Couleur de fond de votre choix */
+  border: 1px solid #000; /* Bordure pour plus de visibilité */
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  display: flex;
+}
+
+.info_league:hover a{
+  background-color: white; /* Couleur de fond lors du survol */
+  opacity: 0.6; /* Réduire légèrement l'opacité lors du survol */
+
+}
+
+.league_gauche {
+  width: 55%; /* 25% de la largeur totale */
+  height: 100%;
+  background-color: red;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.league_gauche_img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.league_droite {
+  width: 45%; /* 75% de la largeur totale */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+}
+
+.league_droite p {
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+
+@media (max-width: 950px) {
+  .info_league{
+    width: 60%; /* Ajustez la largeur totale de chaque boîte */
+    height: 60px; /* Hauteur de votre choix */
+    margin: 10px; /* Ajouter une marge entre les boîtes */
+
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+.classement {
+  width: 80%;
+  margin-left: 20%;
+}
+
+
+.info_c {
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-weight: bold; /* Met en gras */
+  font-size: 24px; /* Taille de police plus grande */
+  text-decoration: underline; /* Souligné */
+}
+/* Style des titres */
+.classement th {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Style des cellules */
+.classement td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Style de la première colonne (Position) */
+.classement td:first-child {
+  font-weight: bold;
+}
+
+/* Style pour les logos */
+.classement img {
+  max-width: 50px;
+}
+
+/* Style pour le lien "Voir plus" */
+.btn_classement{
+  color: blue;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  transition: background-color 0.3s;
+
+}
+
+.btn_classement:hover {
+  background-color: #ddd;
+}
+
+/* Style pour les cinq premières lignes en vert */
+.classement tr:nth-child(-n+5) {
+  background-color: #c3e6cb; /* vert */
+}
+
+/* Style pour les trois dernières lignes en rouge */
+.classement tr:nth-last-child(-n+3) {
+  background-color: #f8d7da; /* rouge */
+}
+
+
+@media only screen and (min-width: 950px) {
+
+.classement th:first-child::after {
+  content: "osition";
+}
+
+
+
+/* Modifier le texte "Victoires" */
+.classement th:nth-child(5)::after {
+  content: "ictoire";
+}
+
+/* Modifier le texte "Défaites" */
+.classement th:nth-child(6)::after {
+  content: "efaite";
+}
+
+/* Modifier le texte "Nuls" */
+.classement th:nth-child(7)::after {
+  content: "ull";
+}
+.classement th:nth-child(11)::after {
+  content: "iffs";
+}
+
+
+
+}
+@media only screen and (max-width: 950px) {
+.c table th:nth-child(n+8),
+.c table td:nth-child(n+8){
+  display: none; /* Masquer les colonnes à partir de la cinquième colonne */
+}
+
+.classement{
+  width: 90%;
+  margin-left: 2%;
+}
+
+
+}
