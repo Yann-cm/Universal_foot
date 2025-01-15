@@ -6,8 +6,6 @@ require_once  "config.php";
 insert_match(61,$dbh);
 #League 1
 
-
-
 insert_match(39,$dbh);
 #premiere league
 

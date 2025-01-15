@@ -7,13 +7,14 @@ function insert_match($id_api,$dbh){
 
 	$response = api_match_league($id_api);
 
+	echo $response;
 	#ALTER TABLE ma_table AUTO_INCREMENT = 1;
 
 
 	$data = json_decode($response, true);
 
 	if ($data !== null ) {
-		for ($i = 0; $i <= 379; $i++) {
+		for ($i = 0; $i <= count($data['response'])-1; $i++) {
 
 
 			$league = $data['response'][$i]['league']['name'];
@@ -67,6 +68,18 @@ function insert_match($id_api,$dbh){
 			$success = $sth->execute(array($statue));
 			$id_Statue = $sth->fetch(PDO::FETCH_ASSOC);
 
+
+
+			if (! isset($id_Statue['Id'])){
+				$insert_statue = "INSERT INTO `statue` (`Nom`) VALUES (?);";
+				$insert_statue = $dbh->prepare($insert_statue);
+				$insert_statue->execute(array($statue));
+			}
+
+			$id_Statue = "SELECT `Id` FROM Statue WHERE Nom = ?";
+			$sth = $dbh->prepare($id_Statue);
+			$success = $sth->execute(array($statue));
+			$id_Statue = $sth->fetch(PDO::FETCH_ASSOC);
 
 			$test_insert = "SELECT api FROM `Matchs` WHERE Id_equipe_A = ? AND Id_equipe_B = ? AND Date = ?";
 			$sth = $dbh->prepare($test_insert);
