@@ -327,18 +327,17 @@ echo '
           <p>'.$equipe_pred[$i]['Age'].' ans</p>';
 
           if ($equipe_pred[$i]['star'] == 0){
-            echo '
-          <form action="" method="post">
-            <label for="nbEtoiles">Nombre d"étoiles :</label>
-            <select name="nbEtoiles" id="nbEtoiles">
-                <option value="1">1 étoile(s)</option>
-                <option value="2">2 étoile(s)</option>
-                <option value="3">3 étoile(s)</option>
-                <option value="4">4 étoile(s)</option>
-                <option value="5">5 étoile(s)</option>
-            </select>
-            <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
-          </form>';}
+              echo '
+            <form action="" method="post">
+              <label for="nbEtoiles">Nombre d"étoiles :</label>
+              <select name="nbEtoiles" id="nbEtoiles">
+                  <option value="1">1 étoile(s)</option>
+                  <option value="2">2 étoile(s)</option>
+                  <option value="3">3 étoile(s)</option>
+              </select>
+              <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+            </form>';
+          }
         
         echo '
         </div>

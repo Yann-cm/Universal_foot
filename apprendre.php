@@ -32,42 +32,44 @@ if (isset($_GET['nb_etoiles'])){
             $equipes = 'all';
 
         }
-        else if ( ! isset($_POST['affiche_reponse'])){
-            if (! isset($_GET['niveaux'])){
-            echo '
-            <div class="league">
-                <div class="info_league">
-                    <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=1"class="">
-                        <div class="league_gauche">
-                            <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
-                        </div>
-                        <div class="league_droite">
-                            <p>Connaiseur</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="info_league">
-                    <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=2"class="">
-                        <div class="league_gauche">
-                            <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
-                        </div>
-                        <div class="league_droite">
-                            <p>Maître</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="info_league">
-                    <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=3"class="">
-                        <div class="league_gauche">
-                            <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
-                        </div>
-                        <div class="league_droite">
-                            <p>Incolable</p>
-                        </div>
-                    </a>
-                </div>
-            </div>';}
 
+        else if ( ! isset($_POST['affiche_reponse'])){
+            
+            if (! isset($_GET['niveaux'])){
+                echo '
+                <div class="league">
+                    <div class="info_league">
+                        <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=1"class="">
+                            <div class="league_gauche">
+                                <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
+                            </div>
+                            <div class="league_droite">
+                                <p>Connaiseur</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="info_league">
+                        <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=2"class="">
+                            <div class="league_gauche">
+                                <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
+                            </div>
+                            <div class="league_droite">
+                                <p>Maître</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="info_league">
+                        <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=3"class="">
+                            <div class="league_gauche">
+                                <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
+                            </div>
+                            <div class="league_droite">
+                                <p>Incolable</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>';
+            }
 
             else {
                 $joueur_hasard = 'SELECT Pays.Nom as Pays ,Joueurs.Id, Joueurs.Nom as Nom ,Photo,Position, Equipes.Nom as Equipes, Age , Numero FROM `Joueurs`  
@@ -81,6 +83,7 @@ if (isset($_GET['nb_etoiles'])){
             }
 
         }
+
         else {
             $joueur_hasard = 'SELECT Pays.Nom as Pays, Joueurs.Id ,Joueurs.Nom as Nom ,Photo,Joueurs.Position as Position, Equipes.Nom as Equipes, Age , Numero FROM `Joueurs`  
                 JOIN Equipes ON Equipes.Id = Joueurs.id_equipe
@@ -90,209 +93,150 @@ if (isset($_GET['nb_etoiles'])){
             $success = $sth->execute(array($_POST['affiche_reponse']));
             $joueur_hasard = $sth->fetchAll(PDO::FETCH_ASSOC);
         }
+
         if (isset($joueur_hasard)){
-        $liste = [
-            ["Pays :", $joueur_hasard[0]['Pays']],
-            ["Poste :", $joueur_hasard[0]['Position']],
-            ["Numero :", $joueur_hasard[0]['Numero']],
-            ["Age :", $joueur_hasard[0]['Age']],
-            ["Equipes :", $joueur_hasard[0]['Equipes']]];
-        unset($niveaux);
-        
-        $id = $joueur_hasard[0]['Id'];
-        shuffle($liste);
-        $nom = $joueur_hasard[0]['Nom'];
-        $photo = $joueur_hasard[0]['Photo'];
+            $liste = [
+                ["Pays :", $joueur_hasard[0]['Pays']],
+                ["Poste :", $joueur_hasard[0]['Position']],
+                ["Numero :", $joueur_hasard[0]['Numero']],
+                ["Age :", $joueur_hasard[0]['Age']],
+                ["Equipes :", $joueur_hasard[0]['Equipes']]];
+            unset($niveaux);
+            
+            $id = $joueur_hasard[0]['Id'];
+            shuffle($liste);
+            $nom = $joueur_hasard[0]['Nom'];
+            $photo = $joueur_hasard[0]['Photo'];
 
-        if (isset($_POST['reponse'])) {
-            $reponse = (isset($_POST["reponse"])) ?$_POST["reponse"] : "Temps écouler" ;
-            if ($reponse == "time"){
-                $resultat = 'rater">Temps écouler';
-            }
-            else if ($reponse != $nom ){
-                $resultat = 'rater">Mauvaise réponse';
-            }
-            else{
-                $resultat = 'reussi">Bonne réponse Bien jouer !';
-            }
-
-            echo '
-            <div class="cherche">
-                <div class="cherche_et_trouve">
-                    <div class="top-div">
-
-                        <p class="'.$resultat.'</p>
-                    </div>
-                    <div class="middle-div">
-                        <div class="image-container">
-                            <img src="'.$photo.'" alt="Image">
-                        </div>
-                    </div>
-                    <div class="bottom-div">
-                        <p class="reponse">'.$nom.'</p>
-                        <p class="reponse">'.$joueur_hasard[0]['Position'].'</p>
-                        <p class="reponse">'.$joueur_hasard[0]['Equipes'].'</p>
-                        <p class="reponse">Age : '.$joueur_hasard[0]['Age'].'</p>
-                        <p class="reponse">Numero : '.$joueur_hasard[0]['Numero'].'</p>
-                        <p class="reponse">Pays : '.$joueur_hasard[0]['Pays'].'</p>
-                        
-                        <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=1"class="a"> Rejouer </a>
-                    </div>
-                </div>
-            </div>';
-        } 
-        else{
-            $requete = "SELECT Nom FROM Joueurs";
-            $joueurs = $dbh->query($requete);
-
-
-echo '
-    <div class="cherche">
-        <div class="cherche_et_trouve">
-            <form id="cherche_et_trouve" method="post">
-                <input type="hidden" name="reponse" id="reponse">
-                <input type="hidden" name="affiche_reponse" id="id_personne">
-                <button type="button" id="demarage" class="bouton_jeux">Démarrer</button>
-                <div id="chrono-container" class="chrono-container">
-                    <label for="chrono">Chronomètre :</label>
-                    <div id="chrono">20</div>
-                </div>
-                <div id="joueur_info">
-                    <div id="info">
-                    <label for="info">Indice sur le joueur :</label>
-
-                    </div>
-                </div>
-                    <label for="titre_joueur" id="titre_joueur">Trouvez Le joueur</label>
-                    <input type="text" id="reponse_user" list="datalist_joueurs">
-                        <datalist id="pas_mt">';
-
-                        foreach($joueurs as $nom){ 
-
-                          echo  '<option value="'.$nom[0].'"></option>';}
-                            
-                     echo '  </datalist>
-                    <button type="button" name="affiche_reponse" id="submitButton" class="bouton_jeux">Envoyer</button>
-            </form>
-        </div>
-    </div>
-    ';}
-?>
-    <script>
-            document.getElementById('demarage').addEventListener('click', function() {
-                
-                var reponse = document.getElementById('submitButton');
-                reponse.style.display = 'flex';
-                var titre = document.getElementById('titre_joueur');
-                titre.style.display = 'flex';
-                var titre = document.getElementById('chrono-container');
-                titre.style.display = 'flex';
-                var titre = document.getElementById('joueur_info');
-                titre.style.display = 'flex';
-                var jeux = document.getElementById('reponse_user');
-                jeux.style.display = 'flex';
-                
-                
-                var countdownElement = document.getElementById('chrono');
-                var infoElement = document.getElementById('info');
-                var reponse_user = document.getElementById('reponse_user');
-                var submitButton = document.getElementById('submitButton');
-                var start = 20;
-
-                var countdownInterval = setInterval(function() {
-                    start--;
-                    countdownElement.textContent = start;
-                    if (start === 18) {
-                        appendInfo("<?php echo $liste[0][0].' '.$liste[0][1]; ?>");
-                    } else if (start === 15) {
-                        appendInfo("<?php echo $liste[1][0].' '.$liste[1][1]; ?>");
-                    } else if (start === 13) {
-                        appendInfo("<?php echo $liste[2][0].' '.$liste[2][1]; ?>");
-                    } else if (start === 10) {
-                        appendInfo("<?php echo $liste[3][0].' '.$liste[3][1]; ?>");
-                    } else if (start === 8) {
-                        appendInfo("<?php echo $liste[4][0].' '.$liste[4][1]; ?>");
-                    }else if (start === 0) {
-                        clearInterval(countdownInterval);
-                        var reponse = "time";
-                        document.getElementById('reponse').value = reponse;
-                        document.getElementById('id_personne').value = <?php echo $id; ?>;
-                        document.getElementById('cherche_et_trouve').submit();
-                        
-                        var jeux = document.getElementById('cherche_et_trouve');
-                        jeux.style.display = 'none';
-                    }
-                }, 1000);
-
-                function appendInfo(info) {
-                    var infoParagraph = document.createElement('p');
-                    infoParagraph.textContent = info;
-                    infoElement.appendChild(infoParagraph);
+            if (isset($_POST['reponse'])) {
+                $reponse = (isset($_POST["reponse"])) ?$_POST["reponse"] : "Temps écouler" ;
+                if ($reponse == "time"){
+                    $resultat = 'rater">Temps écouler';
+                }
+                else if ($reponse != $nom ){
+                    $resultat = 'rater">Mauvaise réponse';
+                }
+                else{
+                    $resultat = 'reussi">Bonne réponse Bien jouer !';
                 }
 
-                submitButton.addEventListener('click', function() {
-                    var reponse = reponse_user.value;
-                    document.getElementById('reponse').value = reponse;
-                    document.getElementById('id_personne').value = <?php echo $id; ?>;
-                    document.getElementById('cherche_et_trouve').submit();
-                });
-            });
-    
-    
-    
-    document.getElementById("reponse_user").addEventListener("input", function() {
-    var inputText = this.value;
-    if (inputText.length > 3) {
-        document.getElementById('pas_mt').id = "datalist_joueurs";
+                echo '
+                <div class="cherche">
+                    <div class="cherche_et_trouve">
+                        <div class="top-div">
 
-    }
-});
-</script>
-
-
-
-<?php
-    
-
-    }}
-
-    else{
-        echo '
-        <div class="league">
-            <div class="info_league">
-                <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all"class="">
-                    <div class="league_gauche">
-                        <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
+                            <p class="'.$resultat.'</p>
+                        </div>
+                        <div class="middle-div">
+                            <div class="image-container">
+                                <img src="'.$photo.'" alt="Image">
+                            </div>
+                        </div>
+                        <div class="bottom-div">
+                            <p class="reponse">'.$nom.'</p>
+                            <p class="reponse">'.$joueur_hasard[0]['Position'].'</p>
+                            <p class="reponse">'.$joueur_hasard[0]['Equipes'].'</p>
+                            <p class="reponse">Age : '.$joueur_hasard[0]['Age'].'</p>
+                            <p class="reponse">Numero : '.$joueur_hasard[0]['Numero'].'</p>
+                            <p class="reponse">Pays : '.$joueur_hasard[0]['Pays'].'</p>
+                            
+                            <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=1"class="a"> Rejouer </a>
+                        </div>
                     </div>
-                    <div class="league_droite">
-                        <p>Tout les Joueurs niveaux '.$_GET['nb_etoiles'].' étoiles</p>
-                    </div>
-                </a>
-            </div>';
-        $info_star = 'SELECT * FROM `Equipes` WHERE star = ?';
-        $sth = $dbh->prepare($info_star);
-        $success = $sth->execute(array($_GET['nb_etoiles']));
-        $info_star = $sth->fetchAll(PDO::FETCH_ASSOC);
-        $equipes = "all";
-        for ($i = 0; $i < count($info_star); $i++) {
-            echo'
-            <div class="info_league">
-                <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes='.$info_star[$i]['Id'].'"class="">
-                    <div class="league_gauche">
-                        <img src="'.$info_star[$i]['Logo'].'" alt="Description de l" image" class="league_gauche_img">
-                    </div>
-                    <div class="league_droite">
-                        <p>'.$info_star[$i]['Nom'].'</p>
-                    </div>
-                </a>
-            </div>';
+                </div>';
+            } 
+            
+            else{
+                $requete = "SELECT Nom FROM Joueurs";
+                $joueurs = $dbh->query($requete);
+                echo '
+                    <div class="cherche">
+                        <div class="cherche_et_trouve">
+                            <form id="cherche_et_trouve" method="post">
+                                <input type="hidden" name="reponse" id="reponse">
+                                <input type="hidden" name="affiche_reponse" id="id_personne">
+                                <button type="button" id="demarage" class="bouton_jeux">Démarrer</button>
+                                <div id="chrono-container" class="chrono-container">
+                                    <label for="chrono">Chronomètre :</label>
+                                    <div id="chrono">20</div>
+                                </div>
+                                <div id="joueur_info">
+                                    <div id="info">
+                                    <label for="info">Indice sur le joueur :</label>
+
+                                    </div>
+                                </div>
+                                    <label for="titre_joueur" id="titre_joueur">Trouvez Le joueur</label>
+                                    <input type="text" id="reponse_user" list="datalist_joueurs">
+                                    <datalist id="pas_mt">';
+
+                                    foreach($joueurs as $nom){ 
+                                        echo  '<option value="'.$nom[0].'"></option>';
+                                    }
+                                            
+                                    echo '  
+                                    </datalist>
+                                    <button type="button" name="affiche_reponse" id="submitButton" class="bouton_jeux">Envoyer</button>
+                            </form>
+                        </div>
+                    </div>';
+            }    
+
+    
+    ?>
+    <script>
+        window.gameInfo = {
+            info1: "<?php echo $liste[0][0].' '.$liste[0][1]; ?>",
+            info2: "<?php echo $liste[1][0].' '.$liste[1][1]; ?>",
+            info3: "<?php echo $liste[2][0].' '.$liste[2][1]; ?>",
+            info4: "<?php echo $liste[3][0].' '.$liste[3][1]; ?>",
+            info5: "<?php echo $liste[4][0].' '.$liste[4][1]; ?>"
+        };
+        window.playerId = <?php echo $id; ?>;
+    </script>
+    <script src="script/script_jeux.js"></script>
 
 
+
+    <?php
         }
-    echo '</div>';
     }
-    
+    else{
+            echo '
+            <div class="league">
+                <div class="info_league">
+                    <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all"class="">
+                        <div class="league_gauche">
+                            <img src="images/all.jpg" alt="Description de l" image" class="league_gauche_img">
+                        </div>
+                        <div class="league_droite">
+                            <p>Tout les Joueurs niveaux '.$_GET['nb_etoiles'].' étoiles</p>
+                        </div>
+                    </a>
+                </div>';
+            $info_star = 'SELECT * FROM `Equipes` WHERE star = ?';
+            $sth = $dbh->prepare($info_star);
+            $success = $sth->execute(array($_GET['nb_etoiles']));
+            $info_star = $sth->fetchAll(PDO::FETCH_ASSOC);
+            $equipes = "all";
+            for ($i = 0; $i < count($info_star); $i++) {
+                echo'
+                <div class="info_league">
+                    <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes='.$info_star[$i]['Id'].'"class="">
+                        <div class="league_gauche">
+                            <img src="'.$info_star[$i]['Logo'].'" alt="Description de l" image" class="league_gauche_img">
+                        </div>
+                        <div class="league_droite">
+                            <p>'.$info_star[$i]['Nom'].'</p>
+                        </div>
+                    </a>
+                </div>';
 
+
+            }
+            echo '</div>';
+    }
+        
 }
 
 else{
@@ -311,15 +255,6 @@ else{
     $requete->execute(array());
     $resultats_3 = $requete->fetch(PDO::FETCH_ASSOC);
     
-    $query = 'SELECT * FROM Joueurs WHERE star = 4 ORDER BY RAND() LIMIT 1;';
-    $requete = $dbh->prepare($query);
-    $requete->execute(array());
-    $resultats_4 = $requete->fetch(PDO::FETCH_ASSOC);
-    
-    $query = 'SELECT * FROM Joueurs WHERE star = 5 ORDER BY RAND() LIMIT 1;';
-    $requete = $dbh->prepare($query);
-    $requete->execute(array());
-    $resultats_5 = $requete->fetch(PDO::FETCH_ASSOC);
 
     echo '  <div class="league">
                 <div class="info_league">
@@ -381,7 +316,7 @@ else{
 }
 
 ?>
-</div>
+
 
 
 
