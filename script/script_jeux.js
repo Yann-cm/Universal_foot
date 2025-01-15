@@ -33,7 +33,7 @@ function startCountdown() {
     const infoElement = document.getElementById('info');
     const reponseUser = document.getElementById('reponse_user');
     const submitButton = document.getElementById('submitButton');
-    let start = 20;
+    let start = 18;
 
     const countdownInterval = setInterval(function() {
         start--;
@@ -57,7 +57,7 @@ function startCountdown() {
 function handleInfoDisplay(time, infoElement) {
     // Ces valeurs devraient être passées depuis PHP via des data attributes
     const timeToInfo = {
-        19: window.gameInfo?.info1,
+        18: window.gameInfo?.info1,
         16: window.gameInfo?.info2,
         14: window.gameInfo?.info3,
         12: window.gameInfo?.info4,

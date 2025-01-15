@@ -105,7 +105,7 @@ else{echo "
                 </ul>
             </div> 
     --->
-            <a href="./accueil" class="mg-left">Accueil</a>
+            <a href="./" class="mg-left">Accueil</a>
             <a href="league.php" class="mg-left">Championnats</a>
             <a href="amis.php" class="mg-left">Amis</a>
             <a href="Combats.php" class="mg-left">Combats</a>
