@@ -57,11 +57,11 @@ function startCountdown() {
 function handleInfoDisplay(time, infoElement) {
     // Ces valeurs devraient être passées depuis PHP via des data attributes
     const timeToInfo = {
-        18: window.gameInfo?.info1,
-        15: window.gameInfo?.info2,
-        13: window.gameInfo?.info3,
-        10: window.gameInfo?.info4,
-        8: window.gameInfo?.info5
+        19: window.gameInfo?.info1,
+        16: window.gameInfo?.info2,
+        14: window.gameInfo?.info3,
+        12: window.gameInfo?.info4,
+        10: window.gameInfo?.info5
     };
 
     if (timeToInfo[time] && infoElement) {

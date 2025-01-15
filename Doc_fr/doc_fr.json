@@ -1,0 +1,24 @@
+{   
+    "poste" : {
+        "Goalkeeper": "gardien",
+        "Defender": "défenseur",
+        "Midfielder": "milieu",
+        "Attacker": "attaquant"
+    },
+    "pays" : {
+        "Austria" : "Autriche",
+        "Belgium" : "Belgique",
+        "Croatia" : "Croatie",
+        "Denmark" : "Danemark",
+        "England" : "Angleterre",
+        "Germany" : "Allemagne",
+        "Italy" : "Italie",
+        "Japan" : "Japon",
+        "South-Korea" : "Corrée du Sud",
+        "Mexico" : "Mexique",
+        "Netherlands" : "Pays Bas",
+        "Spain" : "Espagne",
+        "Sweden" : "Suède",
+        "Turkey" : "Turquie"
+    }
+}

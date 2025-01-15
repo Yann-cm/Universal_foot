@@ -18,6 +18,7 @@
             require_once  'config.php';
             require_once  'fonction_global.php';
             require_once  'navbar.php';
+            $doc_fr = json_decode(file_get_contents('Doc_fr/doc_fr.json'), true);
 
 if (isset($_GET['nb_etoiles'])){
     if (isset($_GET['equipes']) ){
@@ -96,8 +97,8 @@ if (isset($_GET['nb_etoiles'])){
 
         if (isset($joueur_hasard)){
             $liste = [
-                ["Pays :", $joueur_hasard[0]['Pays']],
-                ["Poste :", $joueur_hasard[0]['Position']],
+                ["Pays :", $doc_fr["pays"][$joueur_hasard[0]['Pays']] ?? $joueur_hasard[0]['Pays']],
+                ["Poste :", $doc_fr["poste"][$joueur_hasard[0]['Position']]],
                 ["Numero :", $joueur_hasard[0]['Numero']],
                 ["Age :", $joueur_hasard[0]['Age']],
                 ["Equipes :", $joueur_hasard[0]['Equipes']]];
@@ -134,11 +135,11 @@ if (isset($_GET['nb_etoiles'])){
                         </div>
                         <div class="bottom-div">
                             <p class="reponse">'.$nom.'</p>
-                            <p class="reponse">'.$joueur_hasard[0]['Position'].'</p>
+                            <p class="reponse">'.$doc_fr["poste"][$joueur_hasard[0]['Position']].'</p>
                             <p class="reponse">'.$joueur_hasard[0]['Equipes'].'</p>
                             <p class="reponse">Age : '.$joueur_hasard[0]['Age'].'</p>
                             <p class="reponse">Numero : '.$joueur_hasard[0]['Numero'].'</p>
-                            <p class="reponse">Pays : '.$joueur_hasard[0]['Pays'].'</p>
+                            <p class="reponse">Pays : '.$doc_fr["pays"][$joueur_hasard[0]['Pays']] ?? $joueur_hasard[0]['Pays'].'</p>
                             
                             <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=1"class="a"> Rejouer </a>
                         </div>
