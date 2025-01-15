@@ -19,6 +19,7 @@ require_once  'fonction_grid.php';
 require_once  'navbar.php';
 
 
+
 if(isset($_GET['nom'])) {
     // Récupérer la valeur du paramètre 'nom'
 
@@ -316,33 +317,52 @@ echo '
         </div>';
     for ($i = 0; $i < $nb_joueur; $i++) {
       if ($equipe_pred[$i]['Position'] == 'Goalkeeper' ){
-      echo '
-      <div class="info_joueur">
-        <div class="image">
-          <img src="'.$equipe_pred[$i]['Photo'].'" alt="Description de l" image" class="image" style="left: 0;">
-        </div>
-        <div class="text">
-          <p>'.$equipe_pred[$i]['Nom'].'</p>
-          <p>'.$equipe_pred[$i]['Numero'].'</p>
-          <p>'.$equipe_pred[$i]['Age'].' ans</p>';
-
-          if ($equipe_pred[$i]['star'] == 0){
-              echo '
-            <form action="" method="post">
-              <label for="nbEtoiles">Nombre d"étoiles :</label>
-              <select name="nbEtoiles" id="nbEtoiles">
-                  <option value="1">1 étoile(s)</option>
-                  <option value="2">2 étoile(s)</option>
-                  <option value="3">3 étoile(s)</option>
-              </select>
-              <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
-            </form>';
-          }
-        
         echo '
-        </div>
-      </div>';}
-    }
+        <div class="info_joueur">
+          <div class="image">
+            <img src="'.$equipe_pred[$i]['Photo'].'" alt="Description de l" image" class="image" style="left: 0;">
+          </div>
+          <div class="text">
+            <p>'.$equipe_pred[$i]['Nom'].'</p>
+            <p>Numéro : '.$equipe_pred[$i]['Numero'].'</p>
+            <p>'.$equipe_pred[$i]['Age'].' ans</p>
+            <p>'.$equipe_pred[$i]['Id_pays'].'</p>';
+
+            if ($equipe_pred[$i]['star'] == 0){
+                echo '
+              <form action="" method="post">
+                <label for="nbEtoiles">Nombre d"étoiles :</label>
+                <select name="nbEtoiles" id="nbEtoiles">
+                    <option value="1">1 étoile(s)</option>
+                    <option value="2">2 étoile(s)</option>
+                    <option value="3">3 étoile(s)</option>
+                </select>
+                <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+              </form>';
+            }
+
+            if ($equipe_pred[$i]['Id_pays'] == Null and $equipe_pred[$i]['star'] == 1){
+              echo '
+                <form action="" method="post">
+                  <label for="pays_choisi">Pays : </label>
+                  <select name="pays_choisi" id="pays_choisi">
+                    <option value="" disabled selected>Choissisez La nationalité du joueur</option>;';
+                      $requete = "SELECT * FROM pays";
+                      $resultats = $dbh->query($requete);
+                      if ($resultats) {
+                          foreach ($resultats as $row) {
+                              echo '<option value="' . $row['Id'] . '">' . $row['Nom'] . '</option>';
+                          }
+                      }
+                  echo '</select>
+                  <input name="joueur_2" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+                </form>';
+            }
+          
+          echo '
+          </div>
+        </div>';}
+      }
     echo '<div style="width: 100%; text-align: center; margin-bottom: 10px;">
           <span style="font-family: Arial, sans-serif; font-size: 20px; font-weight: bold;">defensseur :</span>
         </div>';
@@ -355,22 +375,41 @@ echo '
         </div>
         <div class="text">
           <p>'.$equipe_pred[$i]['Nom'].'</p>
-          <p>'.$equipe_pred[$i]['Numero'].'</p>
+          <p>Numéro : '.$equipe_pred[$i]['Numero'].'</p>
           <p>'.$equipe_pred[$i]['Age'].' ans</p>';
 
-          if ($equipe_pred[$i]['star'] == 0){
+        if ($equipe_pred[$i]['star'] == 0){
             echo '
-          <form action="" method="post">
-            <label for="nbEtoiles">Nombre d"étoiles :</label>
-            <select name="nbEtoiles" id="nbEtoiles">
-                <option value="1">1 étoile(s)</option>
-                <option value="2">2 étoile(s)</option>
-                <option value="3">3 étoile(s)</option>
-                <option value="4">4 étoile(s)</option>
-                <option value="5">5 étoile(s)</option>
-            </select>
-            <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
-          </form>';}
+              <form action="" method="post">
+                <label for="nbEtoiles">Nombre d"étoiles :</label>
+                <select name="nbEtoiles" id="nbEtoiles">
+                    <option value="1">1 étoile(s)</option>
+                    <option value="2">2 étoile(s)</option>
+                    <option value="3">3 étoile(s)</option>
+                    <option value="4">4 étoile(s)</option>
+                    <option value="5">5 étoile(s)</option>
+                </select>
+                <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+              </form>';
+        }
+         
+        if ($equipe_pred[$i]['Id_pays'] == Null and $equipe_pred[$i]['star'] == 1){
+          echo '
+            <form action="" method="post">
+              <label for="pays_choisi">Pays : </label>
+              <select name="pays_choisi" id="pays_choisi">
+                <option value="" disabled selected>Choissisez La nationalité du joueur</option>;';
+                  $requete = "SELECT * FROM pays";
+                  $resultats = $dbh->query($requete);
+                  if ($resultats) {
+                      foreach ($resultats as $row) {
+                          echo '<option value="' . $row['Id'] . '">' . $row['Nom'] . '</option>';
+                      }
+                  }
+              echo '</select>
+              <input name="joueur_2" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+            </form>';
+        }
         
         echo '
         </div>
@@ -388,22 +427,40 @@ echo '
         </div>
         <div class="text">
           <p>'.$equipe_pred[$i]['Nom'].'</p>
-          <p>'.$equipe_pred[$i]['Numero'].'</p>
+          <p>Numéro : '.$equipe_pred[$i]['Numero'].'</p>
           <p>'.$equipe_pred[$i]['Age'].' ans</p>';
 
-          if ($equipe_pred[$i]['star'] == 0){
-            echo '
-          <form action="" method="post">
-            <label for="nbEtoiles">Nombre d"étoiles :</label>
-            <select name="nbEtoiles" id="nbEtoiles">
-                <option value="1">1 étoile(s)</option>
-                <option value="2">2 étoile(s)</option>
-                <option value="3">3 étoile(s)</option>
-                <option value="4">4 étoile(s)</option>
-                <option value="5">5 étoile(s)</option>
-            </select>
-            <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
-          </form>';}
+        if ($equipe_pred[$i]['star'] == 0){
+          echo '
+            <form action="" method="post">
+              <label for="nbEtoiles">Nombre d"étoiles :</label>
+              <select name="nbEtoiles" id="nbEtoiles">
+                  <option value="1">1 étoile(s)</option>
+                  <option value="2">2 étoile(s)</option>
+                  <option value="3">3 étoile(s)</option>
+                  <option value="4">4 étoile(s)</option>
+                  <option value="5">5 étoile(s)</option>
+              </select>
+              <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+            </form>';
+        }
+        if ($equipe_pred[$i]['Id_pays'] == Null and $equipe_pred[$i]['star'] == 1){
+          echo '
+            <form action="" method="post">
+              <label for="pays_choisi">Pays : </label>
+              <select name="pays_choisi" id="pays_choisi">
+                <option value="" disabled selected>Choissisez La nationalité du joueur</option>;';
+                  $requete = "SELECT * FROM pays";
+                  $resultats = $dbh->query($requete);
+                  if ($resultats) {
+                      foreach ($resultats as $row) {
+                          echo '<option value="' . $row['Id'] . '">' . $row['Nom'] . '</option>';
+                      }
+                  }
+              echo '</select>
+              <input name="joueur_2" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+            </form>';
+        }
         
         echo '
         </div>
@@ -421,22 +478,40 @@ echo '
         </div>
         <div class="text">
           <p>'.$equipe_pred[$i]['Nom'].'</p>
-          <p>'.$equipe_pred[$i]['Numero'].'</p>
+          <p>Numéro : '.$equipe_pred[$i]['Numero'].'</p>
           <p>'.$equipe_pred[$i]['Age'].' ans</p>';
 
-          if ($equipe_pred[$i]['star'] == 0){
-            echo '
-          <form action="" method="post">
-            <label for="nbEtoiles">Nombre d"étoiles :</label>
-            <select name="nbEtoiles" id="nbEtoiles">
-                <option value="1">1 étoile(s)</option>
-                <option value="2">2 étoile(s)</option>
-                <option value="3">3 étoile(s)</option>
-                <option value="4">4 étoile(s)</option>
-                <option value="5">5 étoile(s)</option>
-            </select>
-            <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
-          </form>';}
+        if ($equipe_pred[$i]['star'] == 0){
+          echo '
+            <form action="" method="post">
+              <label for="nbEtoiles">Nombre d"étoiles :</label>
+              <select name="nbEtoiles" id="nbEtoiles">
+                  <option value="1">1 étoile(s)</option>
+                  <option value="2">2 étoile(s)</option>
+                  <option value="3">3 étoile(s)</option>
+                  <option value="4">4 étoile(s)</option>
+                  <option value="5">5 étoile(s)</option>
+              </select>
+              <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+            </form>';
+        }
+        if ($equipe_pred[$i]['Id_pays'] == Null and $equipe_pred[$i]['star'] == 1){
+          echo '
+            <form action="" method="post">
+              <label for="pays_choisi">Pays : </label>
+              <select name="pays_choisi" id="pays_choisi">
+                <option value="" disabled selected>Choissisez La nationalité du joueur</option>;';
+                  $requete = "SELECT * FROM pays";
+                  $resultats = $dbh->query($requete);
+                  if ($resultats) {
+                      foreach ($resultats as $row) {
+                          echo '<option value="' . $row['Id'] . '">' . $row['Nom'] . '</option>';
+                      }
+                  }
+              echo '</select>
+              <input name="joueur_2" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
+            </form>';
+        }
         
         echo '
         </div>
@@ -447,6 +522,10 @@ echo '
   if (isset($_POST['joueur'])){
     $update_star = $dbh->prepare("UPDATE `Joueurs` SET `star` = ? WHERE `Joueurs`.`Nom` = ?;");
     $update_star->execute(array($_POST['nbEtoiles'],$_POST['joueur']));
+  }
+  if (isset($_POST['joueur_2'])){
+    $update_pays = $dbh->prepare("UPDATE `Joueurs` SET `Id_pays` = ? WHERE `Joueurs`.`Nom` = ?;");
+    $update_pays->execute(array($_POST['pays_choisi'],$_POST['joueur_2']));
   }
 
 }
