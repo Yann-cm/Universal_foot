@@ -386,8 +386,6 @@ echo '
                     <option value="1">1 étoile(s)</option>
                     <option value="2">2 étoile(s)</option>
                     <option value="3">3 étoile(s)</option>
-                    <option value="4">4 étoile(s)</option>
-                    <option value="5">5 étoile(s)</option>
                 </select>
                 <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
               </form>';
@@ -438,8 +436,6 @@ echo '
                   <option value="1">1 étoile(s)</option>
                   <option value="2">2 étoile(s)</option>
                   <option value="3">3 étoile(s)</option>
-                  <option value="4">4 étoile(s)</option>
-                  <option value="5">5 étoile(s)</option>
               </select>
               <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
             </form>';
@@ -489,8 +485,6 @@ echo '
                   <option value="1">1 étoile(s)</option>
                   <option value="2">2 étoile(s)</option>
                   <option value="3">3 étoile(s)</option>
-                  <option value="4">4 étoile(s)</option>
-                  <option value="5">5 étoile(s)</option>
               </select>
               <input name="joueur" type="submit" value="'.$equipe_pred[$i]['Nom'].'">
             </form>';

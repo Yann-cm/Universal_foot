@@ -139,7 +139,8 @@ if (isset($_GET['nb_etoiles'])){
                             <p class="reponse">'.$joueur_hasard[0]['Equipes'].'</p>
                             <p class="reponse">Age : '.$joueur_hasard[0]['Age'].'</p>
                             <p class="reponse">Numero : '.$joueur_hasard[0]['Numero'].'</p>
-                            <p class="reponse">Pays : '.$doc_fr["pays"][$joueur_hasard[0]['Pays']] ?? $joueur_hasard[0]['Pays'].'</p>
+                            <p class="reponse">Pays : '.(isset($doc_fr["pays"][$joueur_hasard[0]['Pays']]) ? $doc_fr["pays"][$joueur_hasard[0]['Pays']] : $joueur_hasard[0]['Pays']).'</p>
+                            
                             
                             <a href="apprendre.php?nb_etoiles='.$_GET['nb_etoiles'].'&equipes=all&niveaux=1"class="a"> Rejouer </a>
                         </div>
