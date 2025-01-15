@@ -152,7 +152,7 @@ if(isset($_GET['nom'])) {
       <div class="win div_info">victoire : '.$nb_win.'</div>
       <div class="lose div_info">defaite : '.$nb_lose.'</div>
       <div class="draw div_info">match nul : '.$nb_draw.'</div>
-      <div class="saison-2023-2024 div_info">Saison 2023-2024</div>
+      <div class="saison-2023-2024 div_info">Saison 2024-2025</div>
       <div class="domicile div_info">A domicile</div>
       <div class="exterieur div_info">A l"exterieur</div>
     </div>

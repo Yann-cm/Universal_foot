@@ -218,7 +218,7 @@ function highlight_match($dbh){
 		JOIN Position AS Position_A ON Equipe_A.Id = Position_A.Id_equipes 
 		JOIN Position AS Position_B ON Equipe_B.Id = Position_B.Id_equipes 
 		SET Matchs.highlight = 1 
-		WHERE Position_A.Position < 5 and Position_B.Position < 5 and Matchs.date > NOW();";
+		WHERE Position_A.Position < 5 and Position_B.Position < 5 and Matchs.date > NOW() and Matchs.date < DATE_ADD(NOW(), INTERVAL 14 DAY);";
 
 		$sth = $dbh->prepare($match_high);
 		$is_successful = $sth->execute(array());
