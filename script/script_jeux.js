@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById("reponse_user").addEventListener("input", function() {
-        if (this.value.length > 3) {
+        if (this.value.length > 2) {
             document.getElementById('pas_mt').id = "datalist_joueurs";
         }
     });
@@ -33,7 +33,7 @@ function startCountdown() {
     const infoElement = document.getElementById('info');
     const reponseUser = document.getElementById('reponse_user');
     const submitButton = document.getElementById('submitButton');
-    let start = 18;
+    let start = 20;
 
     const countdownInterval = setInterval(function() {
         start--;
@@ -55,17 +55,17 @@ function startCountdown() {
 }
 
 function handleInfoDisplay(time, infoElement) {
-    // Ces valeurs devraient être passées depuis PHP via des data attributes
-    const timeToInfo = {
-        18: window.gameInfo?.info1,
-        16: window.gameInfo?.info2,
-        14: window.gameInfo?.info3,
-        12: window.gameInfo?.info4,
-        10: window.gameInfo?.info5
-    };
+    const timeChecks = [
+        { time: 19, info: window.gameInfo?.info1 },
+        { time: 17, info: window.gameInfo?.info2 },
+        { time: 14, info: window.gameInfo?.info3 },
+        { time: 12, info: window.gameInfo?.info4 },
+        { time: 10, info: window.gameInfo?.info5 }
+    ];
 
-    if (timeToInfo[time] && infoElement) {
-        appendInfo(timeToInfo[time], infoElement);
+    const currentTimeCheck = timeChecks.find(check => time === check.time);
+    if (currentTimeCheck?.info && infoElement) {
+        appendInfo(currentTimeCheck.info, infoElement);
     }
 }
 

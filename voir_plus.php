@@ -133,8 +133,6 @@ if(isset($_GET['nom'])) {
     $success = $sth->execute(array($id_equipe,$id_equipe));
     $match_passe = $sth->fetchall();
 
-
-
       $nom_cours_1 = ($match_prochain[0]['Nom_A'] === $nom) ? $match_prochain[0]['Nom_B'] : $match_prochain[0]['Nom_A'];
       $nom_cours_2 = ($match_prochain[1]['Nom_A'] === $nom) ? $match_prochain[1]['Nom_B'] : $match_prochain[1]['Nom_A'];
       $nom_cours_3 = ($match_prochain[2]['Nom_A'] === $nom) ? $match_prochain[2]['Nom_B'] : $match_prochain[2]['Nom_A'];
@@ -142,7 +140,7 @@ if(isset($_GET['nom'])) {
 
     echo '
     <div class="container">
-  <div class="i1">
+    <div class="i1">
     <div class="state">
       <div class="lose_h div_info">'.$nb_lose_h.'</div>
       <div class="lose_a div_info">'.$nb_lose_a.'</div>
@@ -290,9 +288,6 @@ if(isset($_GET['nom'])) {
           </div>
   </div>
 </div>';
-
-
-
 
 echo '
 
